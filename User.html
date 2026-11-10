@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>کتابخانه نسل آفتاب — کاربران</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#7c3aed;--primary-dark:#5b21b6;--primary-deep:#4c1d95;--primary-light:#ede9fe;--accent:#f59e0b;--accent-dark:#b45309;--accent-light:#fef3c7;--teal:#0d9488;--teal-light:#ccfbf1;--rose:#e11d48;--rose-light:#ffe4e6;--ink:#1e1b4b;--muted:#6b7280;--bg:#f8f6ff;--card:#fff;--line:#ede9f6;--input-bg:#fff;--radius:16px;--radius-lg:20px;--shadow-sm:0 1px 3px rgba(76,29,149,.06);--shadow-lg:0 18px 40px rgba(76,29,149,.14)}
+body.dark{--ink:#f1f0fa;--muted:#a5a1b8;--bg:#100c18;--card:#1c1626;--line:#2d2438;--input-bg:#16101e;--primary-light:#2d1b5c;--accent-light:#3e2b0d;--teal-light:#0d322e;--rose-light:#3d0f1a}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.65;font-size:15px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.app{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+.app-header{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:var(--card);border-bottom:1px solid var(--line);z-index:10}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.brand-logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--primary-deep),var(--primary));display:grid;place-items:center;flex-shrink:0;color:#fbbf24;font-size:1.1rem}
+.brand-text h1{margin:0;font-size:.95rem;font-weight:800;line-height:1.3}
+.brand-text p{margin:0;font-size:.72rem;color:var(--muted)}
+.header-actions{display:flex;gap:6px;flex-shrink:0}
+.icon-btn{width:42px;height:42px;border-radius:12px;border:0;background:var(--bg);display:grid;place-items:center;font-size:1.1rem}
+.icon-btn.primary{background:var(--primary);color:#fff}
+.icon-btn.danger{background:var(--rose-light);color:var(--rose)}
+.app-body{flex:1;display:flex;overflow:hidden;min-height:0}
+.app-sidebar{display:none}
+.app-content{flex:1;overflow-y:auto;padding:14px 14px 20px;min-width:0}
+.page{display:none;animation:fade .2s}
+.page.active{display:block}
+@keyframes fade{from{opacity:.6;transform:translateY(4px)}to{opacity:1;transform:none}}
+.page-heading{margin:0 0 14px}
+.page-heading h2{margin:0;font-size:1.15rem;font-weight:800}
+.page-heading p{margin:3px 0 0;color:var(--muted);font-size:.82rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:16px;margin-bottom:12px}
+.card-title{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-size:.95rem;font-weight:700}
+.hero{position:relative;overflow:hidden;padding:22px 20px;color:#fff;background:radial-gradient(circle at 90% 10%,rgba(245,158,11,.28),transparent 45%),linear-gradient(135deg,#4c1d95 0%,#7c3aed 100%);border-radius:var(--radius-lg);margin-bottom:14px}
+.hero h2{margin:0 0 6px;font-size:1.25rem;font-weight:800}
+.hero p{margin:0 0 14px;color:rgba(255,255,255,.88);font-size:.85rem}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{min-height:44px;padding:10px 16px;border-radius:12px;border:0;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-weight:600;font-size:.88rem;white-space:nowrap}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-ghost{background:var(--bg);border:1px solid var(--line)}
+.btn-danger{background:var(--rose-light);color:var(--rose)}
+.btn-sm{min-height:34px;padding:6px 11px;font-size:.8rem}
+.btn-block{width:100%}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+.btn-row>*{flex:1}
+.form-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.field{display:grid;gap:6px}
+.field label{font-size:.82rem;font-weight:600}
+.field input,.field select,.field textarea{width:100%;min-height:48px;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;background:var(--input-bg);outline:0;font-size:.92rem}
+.field textarea{min-height:90px;resize:vertical;font-family:inherit}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--primary)}
+.form-actions{margin-top:14px}
+.helper{color:var(--muted);font-size:.78rem;margin:6px 0 0}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:640px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat-card{padding:14px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
+.stat-number{font-size:1.3rem;font-weight:800}
+.stat-label{font-size:.75rem;color:var(--muted)}
+.books-grid{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:640px){.books-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
+.book-card{padding:12px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line);cursor:pointer;position:relative;transition:transform .15s}
+.book-card:active{transform:scale(.98)}
+.book-thumb{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px;margin-bottom:8px;background:var(--primary-light)}
+.book-thumb-ph{width:100%;aspect-ratio:3/4;border-radius:10px;margin-bottom:8px;background:linear-gradient(135deg,var(--primary-light),var(--accent-light));display:grid;place-items:center;font-size:2rem}
+.book-card h4{margin:0 0 4px;font-size:.9rem;line-height:1.4}
+.book-card .cat{font-size:.72rem;color:var(--muted);margin-bottom:6px}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:99px;font-size:.72rem;font-weight:600;white-space:nowrap}
+.badge-green{color:#087857;background:#e4f8ef}
+.badge-orange{color:var(--accent-dark);background:var(--accent-light)}
+.badge-red{color:var(--rose);background:var(--rose-light)}
+.badge-purple{color:var(--primary);background:var(--primary-light)}
+.rank{position:absolute;top:14px;left:14px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#b45309);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.78rem;z-index:1}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+table{width:100%;border-collapse:collapse;min-width:400px;background:var(--card)}
+th,td{padding:10px 8px;text-align:right;border-bottom:1px solid var(--line);font-size:.82rem}
+th{background:var(--bg);color:var(--muted);font-weight:700;font-size:.74rem}
+.empty-cell{padding:24px;text-align:center;color:var(--muted)}
+.bottom-nav{flex-shrink:0;display:flex;padding:6px 8px;background:var(--card);border-top:1px solid var(--line);z-index:10}
+.nav-item{flex:1;min-height:58px;border-radius:12px;border:0;background:transparent;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:.68rem;font-weight:600;padding:6px 4px}
+.nav-item.active{color:var(--primary);background:var(--primary-light)}
+.nav-item span.ico{font-size:1.3rem;line-height:1}
+.modal-backdrop{position:fixed;inset:0;z-index:150;background:rgba(20,15,40,.55);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-backdrop[hidden]{display:none}
+.modal-box{width:100%;max-width:480px;padding:24px;background:var(--card);border-radius:var(--radius-lg);max-height:90vh;overflow-y:auto;position:relative}
+.modal-box h3{margin:0 0 6px;font-size:1.05rem}
+.modal-close{position:absolute;top:10px;left:10px;width:36px;height:36px;border-radius:10px;border:0;background:var(--bg);display:grid;place-items:center;font-size:1.1rem}
+.book-detail-img{width:100%;max-height:320px;object-fit:contain;border-radius:12px;background:var(--bg);margin-bottom:14px}
+.book-detail-ph{width:100%;aspect-ratio:3/4;max-height:320px;border-radius:12px;background:linear-gradient(135deg,var(--primary-light),var(--accent-light));display:grid;place-items:center;font-size:4rem;margin-bottom:14px}
+.toast{position:fixed;bottom:80px;left:50%;transform:translate(-50%,20px);z-index:200;padding:11px 18px;border-radius:14px;background:var(--ink);color:#fff;font-size:.85rem;opacity:0;pointer-events:none;transition:.25s;max-width:calc(100% - 40px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.reader-banner{padding:12px 14px;border-radius:14px;background:var(--teal-light);color:var(--teal);margin-bottom:14px;font-size:.85rem}
+/* راهنمای ثبت‌نام */
+.tutorial-box{margin-top:14px;padding:12px 14px;background:var(--accent-light);border-radius:12px;border:1px solid rgba(245,158,11,.3)}
+.tutorial-box h4{margin:0 0 8px;font-size:.85rem;display:flex;align-items:center;gap:6px;color:var(--accent-dark)}
+.tutorial-steps{margin:0;padding:0;list-style:none;counter-reset:step}
+.tutorial-steps li{counter-increment:step;padding:6px 0;padding-right:30px;position:relative;font-size:.8rem;line-height:1.55;color:var(--accent-dark)}
+.tutorial-steps li::before{content:counter(step);position:absolute;right:0;top:6px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:.72rem;font-weight:800}
+.tutorial-note{margin:10px 0 0;padding:8px 10px;background:rgba(124,58,237,.08);border-radius:8px;font-size:.76rem;color:var(--primary);line-height:1.6}
+@media(min-width:900px){
+  .app-body{display:grid;grid-template-columns:220px minmax(0,1fr);overflow:hidden}
+  .app-sidebar{display:flex;flex-direction:column;gap:3px;padding:16px 12px;background:var(--card);border-inline-end:1px solid var(--line);overflow-y:auto}
+  .app-content{padding:24px 28px 32px}
+  .bottom-nav{display:none !important}
+  .side-nav-btn{width:100%;min-height:44px;padding:10px 12px;border:0;border-radius:11px;background:transparent;color:var(--muted);font-size:.9rem;text-align:right;display:flex;align-items:center;gap:10px}
+  .side-nav-btn.active{background:var(--primary);color:#fff}
+  .side-nav-section{font-size:.68rem;font-weight:800;color:var(--muted);padding:14px 12px 6px}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-logo">📚</div>
+      <div class="brand-text"><h1>کتابخانه نسل آفتاب</h1><p id="userGreeting">کتابخانه عمومی</p></div>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeToggle" title="تاریک/روشن">🌙</button>
+      <button class="icon-btn primary" id="loginBtn" title="ورود">🔑</button>
+      <button class="icon-btn danger" id="logoutBtn" title="خروج" style="display:none;">🚪</button>
+    </div>
+  </header>
+
+  <div class="app-body">
+    <aside class="app-sidebar" id="appSidebar"></aside>
+    <main class="app-content" id="appContent">
+
+      <section class="page active" id="page-home">
+        <div class="reader-banner" id="readerBanner" style="display:none;">
+          خوش آمدید <b id="readerName"></b>! روی هر کتاب کلیک کنید تا امانت بگیرید.
+        </div>
+        <div class="hero">
+          <h2>به کتابخانه نسل آفتاب خوش آمدید</h2>
+          <p>کتاب‌های پرطرفدار، امانت آنلاین، پرسش و پاسخ</p>
+          <div class="hero-actions">
+            <button class="btn btn-teal" onclick="goTo('books')">📖 مشاهده کتاب‌ها</button>
+            <button class="btn" style="background:rgba(255,255,255,.18);color:#fff;" onclick="goTo('request')">💬 پرسش و پاسخ</button>
+          </div>
+        </div>
+        <div class="page-heading"><h2>🔥 پرطرفدارترین‌ها</h2><p>بر اساس بیشترین امانت</p></div>
+        <div class="books-grid" id="popularBooks"></div>
+        <div class="page-heading" style="margin-top:20px;"><h2>📊 آمار</h2></div>
+        <div class="stats-grid" id="statsGrid"></div>
+      </section>
+
+      <section class="page" id="page-books">
+        <div class="page-heading"><h2>📚 کتاب‌ها</h2><p>برای امانت روی کتاب کلیک کنید</p></div>
+        <div class="books-grid" id="booksGrid"></div>
+      </section>
+
+      <section class="page" id="page-myBooks">
+        <div class="page-heading"><h2>📖 کتاب‌های من</h2><p>سوابق امانت شما</p></div>
+        <div class="card"><div class="table-wrap"><table><thead><tr><th>کتاب</th><th>کد</th><th>تاریخ</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody id="myLoansBody"></tbody></table></div></div>
+      </section>
+
+      <section class="page" id="page-request">
+        <div class="page-heading"><h2>💬 پرسش و پیشنهاد</h2></div>
+        <div class="card">
+          <div class="card-title">پرسیدن سوال</div>
+          <form id="questionForm">
+            <div class="form-grid">
+              <div class="field"><label>نام شما</label><input id="qName" required></div>
+              <div class="field"><label>سوال</label><textarea id="qText" required></textarea></div>
+            </div>
+            <div class="form-actions"><button type="submit" class="btn btn-primary btn-block">ارسال سوال</button></div>
+          </form>
+        </div>
+        <div class="card">
+          <div class="card-title">سوالات اخیر</div>
+          <div id="qaList"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">انتقاد / سفارش</div>
+          <form id="requestForm">
+            <div class="form-grid">
+              <div class="field"><label>نام</label><input id="reqName" required></div>
+              <div class="field"><label>نوع</label><select id="reqType"><option>سفارش کتاب</option><option>انتقاد / پیشنهاد</option></select></div>
+              <div class="field"><label>متن</label><textarea id="reqMessage" required></textarea></div>
+            </div>
+            <div class="form-actions"><button type="submit" class="btn btn-primary btn-block">ارسال</button></div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <nav class="bottom-nav" id="bottomNav"></nav>
+</div>
+
+<!-- Auth Modal -->
+<div class="modal-backdrop" id="authModal" hidden>
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('authModal').hidden=true">✕</button>
+    <h3 id="authTitle">🔑 ورود</h3>
+
+    <div style="display:flex;gap:6px;margin:12px 0;">
+      <button class="btn btn-primary btn-sm" id="tabLogin" style="flex:1;" onclick="switchTab('login')">ورود</button>
+      <button class="btn btn-ghost btn-sm" id="tabRegister" style="flex:1;" onclick="switchTab('register')">ثبت‌نام</button>
+    </div>
+
+    <!-- فرم ورود -->
+    <form id="loginForm">
+      <div class="form-grid">
+        <div class="field"><label>نام</label><input id="loginName" required></div>
+        <div class="field"><label>رمز</label><input type="password" id="loginPass" required></div>
+      </div>
+      <div class="form-actions"><button type="submit" class="btn btn-primary btn-block">ورود</button></div>
+      <p class="helper" style="text-align:center;margin-top:8px;">حساب ندارید؟ روی «ثبت‌نام» بزنید.</p>
+    </form>
+
+    <!-- فرم ثبت‌نام + آموزش -->
+    <form id="registerForm" style="display:none;">
+      <div class="form-grid">
+        <div class="field"><label>نام کامل (یکتا)</label><input id="regName" required maxlength="80" placeholder="مثلاً علی رضایی"></div>
+        <div class="field"><label>رمز (حداقل ۴ کاراکتر)</label><input type="password" id="regPass" required minlength="4"></div>
+        <div class="field"><label>تکرار رمز</label><input type="password" id="regPass2" required></div>
+      </div>
+      <div class="form-actions"><button type="submit" class="btn btn-teal btn-block">✅ ثبت‌نام</button></div>
+
+      <!-- راهنمای ثبت‌نام -->
+      <div class="tutorial-box">
+        <h4>📖 راهنمای ثبت‌نام</h4>
+        <ol class="tutorial-steps">
+          <li>نام کامل خود را وارد کنید (این نام باید یکتا باشد و بعداً برای ورود استفاده می‌شود).</li>
+          <li>یک رمز حداقل ۴ کاراکتری انتخاب کنید.</li>
+          <li>رمز را در فیلد تکرار وارد کنید تا اشتباه تایپی نداشته باشید.</li>
+          <li>روی دکمه «ثبت‌نام» کلیک کنید.</li>
+          <li>پس از ثبت‌نام، به‌طور خودکار وارد حساب خود می‌شوید.</li>
+          <li>حالا می‌توانید کتاب‌ها را مرور کنید و با کلیک روی هر کتاب، آن را امانت بگیرید.</li>
+          <li>کتاب‌های امانت‌گرفته در بخش «کتاب‌های من» قابل مشاهده و بازگشت هستند.</li>
+          <li>سوالات خود را از بخش «پیشنهاد» بپرسید تا مدیر پاسخ دهد.</li>
+        </ol>
+        <p class="tutorial-note">
+          💡 اگر نام شما قبلاً ثبت شده باشد، پیام خطا می‌بینید؛ در این صورت نام دیگری انتخاب کنید یا از بخش «ورود» با همان نام و رمز قبلی وارد شوید.
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Book Detail Modal -->
+<div class="modal-backdrop" id="bookDetail" hidden>
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('bookDetail').hidden=true">✕</button>
+    <div id="bookDetailBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   CONFIG
+   ============================================================ */
+const GH_TOKEN = "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";
+const REPO_OWNER = "nasleaftab62-web";
+const REPO_NAME  = "laiberyBooks";
+const DB_PATH    = "db.json";
+const DB_CACHE   = "naslUserDB_v1";
+const SESSION_KEY = "naslUserSession";
+
+let db = null;
+let dbSha = null;
+let currentUser = null;
+let currentPage = "home";
+let toastTimer;
+
+/* ============================================================
+   Helpers
+   ============================================================ */
+const makeId = () => Date.now().toString(36) + Math.random().toString(36).slice(2);
+const esc = v => String(v ?? "").replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+function formatDate(iso){ if(!iso) return "—"; try{ return new Intl.DateTimeFormat("fa-IR",{year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(iso)); }catch(e){ return "—"; } }
+function showToast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),2600); }
+async function hashPassword(pw){ const b=await crypto.subtle.digest("SHA-256", new TextEncoder().encode(pw)); return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join(""); }
+
+/* ============================================================
+   GitHub API
+   ============================================================ */
+async function ghRequest(path, options={}){
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/${path}`;
+  const res = await fetch(url, { ...options, headers: { "Accept":"application/vnd.github+json", "Authorization":`Bearer ${GH_TOKEN}`, "X-GitHub-Api-Version":"2022-11-28", ...(options.headers||{}) } });
+  if (!res.ok) { let m=`HTTP ${res.status}`; try{ const e=await res.json(); m=e.message||m; }catch{} throw new Error(m); }
+  return res.json();
+}
+async function getFileSha(path){ try{ const d=await ghRequest(`contents/${path}?ref=main`); return d.sha; }catch(e){ if(e.message.includes("Not Found")||e.message.includes("404")) return null; throw e; } }
+async function getFileContent(path){ try{ const d=await ghRequest(`contents/${path}?ref=main`); if(!d.content) return null; return decodeURIComponent(escape(atob(d.content.replace(/\n/g,"")))); }catch(e){ if(e.message.includes("Not Found")||e.message.includes("404")) return null; throw e; } }
+async function putFile(path, content, message, sha=null){
+  const body = { message, content: btoa(unescape(encodeURIComponent(content))), branch: "main" };
+  if (sha) body.sha = sha;
+  return ghRequest(`contents/${path}`, { method:"PUT", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body) });
+}
+
+/* ============================================================
+   DB Layer
+   ============================================================ */
+async function loadDB(){
+  try {
+    const content = await getFileContent(DB_PATH);
+    if (!content) throw new Error("db.json نیست");
+    db = JSON.parse(content);
+    if (!db.questions) db.questions = [];
+    if (!db.requests) db.requests = [];
+    if (!db.users) db.users = [];
+    localStorage.setItem(DB_CACHE, JSON.stringify(db));
+    dbSha = await getFileSha(DB_PATH);
+    return db;
+  } catch(e) {
+    console.warn("Load failed:", e);
+    const cached = localStorage.getItem(DB_CACHE);
+    if (cached) { db = JSON.parse(cached); return db; }
+    db = { users:[], books:[], loans:[], categories:[], requests:[], questions:[], customPages:[], settings:{} };
+    return db;
+  }
+}
+async function saveDB(){
+  if (!db) return;
+  localStorage.setItem(DB_CACHE, JSON.stringify(db));
+  try {
+    if (!dbSha) dbSha = await getFileSha(DB_PATH);
+    const res = await putFile(DB_PATH, JSON.stringify(db,null,2), "User app update", dbSha);
+    dbSha = res.content.sha;
+  } catch(e){ console.error("Save failed:", e); throw e; }
+}
+
+/* ============================================================
+   Navigation
+   ============================================================ */
+const PUBLIC_NAV = [
+  { page:"home", icon:"🏠", label:"خانه" },
+  { page:"books", icon:"📖", label:"کتاب‌ها" },
+  { page:"request", icon:"💬", label:"پیشنهاد" }
+];
+const READER_NAV = [
+  { page:"home", icon:"🏠", label:"خانه" },
+  { page:"books", icon:"📖", label:"کتاب‌ها" },
+  { page:"myBooks", icon:"📚", label:"کتاب‌های من" },
+  { page:"request", icon:"💬", label:"پیشنهاد" }
+];
+
+function buildSidebar(){
+  const el = document.getElementById("appSidebar");
+  const items = (currentUser && currentUser.role === "reader") ? READER_NAV : PUBLIC_NAV;
+  el.innerHTML = `<div class="side-nav-section">منو</div>` +
+    items.map(n => `<button class="side-nav-btn" data-page="${n.page}">${n.icon} <span>${n.label}</span></button>`).join("");
+  el.querySelectorAll(".side-nav-btn").forEach(b => b.onclick = () => goTo(b.dataset.page));
+  updateNavActive();
+}
+function buildBottomNav(){
+  const nav = document.getElementById("bottomNav");
+  const items = (currentUser && currentUser.role === "reader") ? READER_NAV : PUBLIC_NAV;
+  nav.innerHTML = items.map(n => `<button class="nav-item" data-page="${n.page}"><span class="ico">${n.icon}</span><span>${n.label}</span></button>`).join("");
+  nav.querySelectorAll(".nav-item").forEach(b => b.onclick = () => goTo(b.dataset.page));
+  updateNavActive();
+}
+function updateNavActive(){
+  document.querySelectorAll(".side-nav-btn").forEach(b => b.classList.toggle("active", b.dataset.page === currentPage));
+  document.querySelectorAll(".nav-item").forEach(b => b.classList.toggle("active", b.dataset.page === currentPage));
+}
+function goTo(page){
+  if (page === "myBooks" && (!currentUser || currentUser.role !== "reader")) { page = "home"; }
+  document.querySelectorAll(".page").forEach(p => p.classList.toggle("active", p.id === `page-${page}`));
+  currentPage = page;
+  updateNavActive();
+  document.getElementById("appContent").scrollTop = 0;
+}
+
+/* ============================================================
+   Renders
+   ============================================================ */
+function getAvailable(b){ return (b.copies||[]).filter(c => c.status === "available"); }
+function getTotal(b){ return (b.copies||[]).length; }
+function loanCount(id){ return db.loans.filter(l => l.bookId === id).length; }
+
+function renderAll(){
+  if (!db) return;
+  renderStats();
+  renderPopular();
+  renderBooks();
+  renderMyLoans();
+  renderQA();
+}
+function renderStats(){
+  const total = db.books.reduce((s,b)=>s+getAvailable(b).length,0);
+  const titles = db.books.length;
+  const active = db.loans.filter(l=>l.status==="active").length;
+  const readers = db.users.filter(u=>u.role==="reader").length;
+  document.getElementById("statsGrid").innerHTML = `
+    <div class="stat-card"><div class="stat-number">${total}</div><div class="stat-label">نسخه موجود</div></div>
+    <div class="stat-card"><div class="stat-number">${titles}</div><div class="stat-label">عنوان</div></div>
+    <div class="stat-card"><div class="stat-number">${active}</div><div class="stat-label">امانت فعال</div></div>
+    <div class="stat-card"><div class="stat-number">${readers}</div><div class="stat-label">خواننده</div></div>`;
+}
+function renderPopular(){
+  const el = document.getElementById("popularBooks");
+  const sorted = [...db.books].map(b => ({ ...b, n: loanCount(b.id) })).sort((a,b)=>b.n-a.n).slice(0,6);
+  if (!sorted.length || sorted[0].n === 0) {
+    el.innerHTML = `<div class="card"><p class="helper" style="margin:0;">هنوز امانتی ثبت نشده است.</p></div>`;
+    return;
+  }
+  el.innerHTML = sorted.filter(b=>b.n>0).map((b,i)=>{
+    const avail = getAvailable(b).length;
+    const thumb = b.image ? `<img class="book-thumb" src="${esc(b.image)}" alt="">` : `<div class="book-thumb-ph">📕</div>`;
+    return `<div class="book-card" onclick="openBookDetail('${b.id}')">
+      ${i===0?'<span class="rank">🥇</span>':`<span class="rank">${i+1}</span>`}
+      ${thumb}
+      <h4>${esc(b.title)}</h4>
+      <div class="cat">${esc(b.category)}</div>
+      <div class="badge badge-purple" style="margin-bottom:4px;">${b.n} امانت</div>
+      <div class="badge ${avail>0?'badge-green':'badge-red'}">${avail} موجود</div>
+    </div>`;
+  }).join("");
+}
+function renderBooks(){
+  const el = document.getElementById("booksGrid");
+  if (!db.books.length) { el.innerHTML = `<div class="card"><p class="helper">کتابی نیست</p></div>`; return; }
+  el.innerHTML = db.books.map(b=>{
+    const avail = getAvailable(b).length;
+    const thumb = b.image ? `<img class="book-thumb" src="${esc(b.image)}" alt="">` : `<div class="book-thumb-ph">📕</div>`;
+    return `<div class="book-card" onclick="openBookDetail('${b.id}')">
+      ${thumb}
+      <h4>${esc(b.title)}</h4>
+      <div class="cat">${esc(b.category)}</div>
+      <div class="badge ${avail>0?'badge-green':'badge-red'}">${avail} از ${getTotal(b)} موجود</div>
+    </div>`;
+  }).join("");
+}
+function renderMyLoans(){
+  const tbody = document.getElementById("myLoansBody");
+  if (!currentUser) { tbody.innerHTML = `<tr><td colspan="5" class="empty-cell">وارد شوید</td></tr>`; return; }
+  const list = db.loans.filter(l => l.member === currentUser.name).reverse();
+  if (!list.length) { tbody.innerHTML = `<tr><td colspan="5" class="empty-cell">امانتی ندارید</td></tr>`; return; }
+  tbody.innerHTML = list.map(l=>`<tr>
+    <td>${esc(l.bookTitle)}</td>
+    <td style="font-family:monospace;font-size:.72rem;">${esc(l.copyCode||"—")}</td>
+    <td style="font-size:.74rem;">${formatDate(l.date)}</td>
+    <td><span class="badge ${l.status==='active'?'badge-orange':'badge-green'}">${l.status==='active'?'فعال':'بازگشته'}</span></td>
+    <td>${l.status==='active'?`<button class="btn btn-sm btn-teal" onclick="returnLoan('${l.id}')">بازگشت</button>`:"—"}</td>
+  </tr>`).join("");
+}
+function renderQA(){
+  const el = document.getElementById("qaList");
+  if (!db.questions.length) { el.innerHTML = `<p class="helper">سوالی نیست</p>`; return; }
+  el.innerHTML = [...db.questions].reverse().slice(0,10).map(q=>{
+    const ans = q.answer
+      ? `<div style="margin-top:6px;padding:8px;background:var(--teal-light);border-radius:8px;font-size:.82rem;"><b>پاسخ:</b> ${esc(q.answer)}</div>`
+      : `<div style="margin-top:6px;font-size:.74rem;color:var(--muted);">در انتظار پاسخ</div>`;
+    return `<div style="padding:10px 0;border-bottom:1px solid var(--line);">
+      <div style="font-weight:600;font-size:.88rem;">${esc(q.question)}</div>
+      <div style="font-size:.72rem;color:var(--muted);">${esc(q.asker)} • ${formatDate(q.createdAt)}</div>
+      ${ans}</div>`;
+  }).join("");
+}
+
+/* ============================================================
+   Book detail
+   ============================================================ */
+window.openBookDetail = (id) => {
+  const b = db.books.find(x=>x.id===id);
+  if (!b) return;
+  const avail = getAvailable(b);
+  const cover = b.image ? `<img class="book-detail-img" src="${esc(b.image)}" alt="">` : `<div class="book-detail-ph">📕</div>`;
+  let action = "";
+  if (!currentUser) {
+    action = `<button class="btn btn-primary btn-block" onclick="document.getElementById('bookDetail').hidden=true; document.getElementById('loginBtn').click();">🔑 برای امانت وارد شوید</button>`;
+  } else if (currentUser.role === "reader") {
+    const active = db.loans.find(l => l.bookId === id && l.member === currentUser.name && l.status === "active");
+    if (active) {
+      action = `<button class="btn btn-teal btn-block" onclick="returnLoan('${active.id}')">✅ بازگشت این کتاب</button>`;
+    } else if (avail.length > 0) {
+      action = `<button class="btn btn-teal btn-block" onclick="borrowBook('${b.id}')">📖 امانت بگیرید</button>`;
+    } else {
+      action = `<button class="btn btn-ghost btn-block" disabled>ناموجود</button>`;
+    }
+  }
+  const copies = (b.copies||[]).map(c=>`<div style="display:flex;justify-content:space-between;padding:4px 8px;border-radius:6px;background:${c.status==='available'?'var(--teal-light)':'var(--accent-light)'};font-family:monospace;font-size:.78rem;margin-bottom:3px;"><span>${esc(c.code)}</span><span>${c.status==='available'?'موجود':'در امانت'}</span></div>`).join("");
+  document.getElementById("bookDetailBody").innerHTML = `
+    ${cover}
+    <h3>${esc(b.title)}</h3>
+    <div style="margin-bottom:10px;">
+      <span class="badge badge-purple">${esc(b.category)}</span>
+      <span class="badge ${avail.length>0?'badge-green':'badge-red'}">${avail.length} از ${getTotal(b)} موجود</span>
+    </div>
+    ${b.donor ? `<div style="font-size:.85rem;margin-bottom:6px;"><b>اهدایی از:</b> ${esc(b.donor)}</div>` : ""}
+    ${b.description ? `<div style="padding:10px;background:var(--bg);border-radius:8px;font-size:.85rem;white-space:pre-wrap;margin-bottom:10px;">${esc(b.description)}</div>` : ""}
+    <div style="margin-bottom:10px;"><b style="font-size:.85rem;">نسخه‌ها:</b>${copies}</div>
+    ${action}`;
+  document.getElementById("bookDetail").hidden = false;
+};
+
+/* ============================================================
+   Borrow / Return
+   ============================================================ */
+window.borrowBook = async (id) => {
+  if (!currentUser || currentUser.role !== "reader") return;
+  const b = db.books.find(x=>x.id===id);
+  if (!b) return;
+  if (db.loans.find(l => l.bookId === id && l.member === currentUser.name && l.status === "active")) {
+    showToast("قبلاً امانت گرفته‌اید"); return;
+  }
+  const copy = b.copies.find(c => c.status === "available");
+  if (!copy) { showToast("موجود نیست"); return; }
+  copy.status = "loaned";
+  const loan = { id: makeId(), bookId: id, bookTitle: b.title, copyCode: copy.code, member: currentUser.name, status:"active", date: new Date().toISOString() };
+  copy.loanId = loan.id;
+  db.loans.push(loan);
+  try { await saveDB(); } catch(e){ showToast("خطا در ذخیره"); return; }
+  document.getElementById("bookDetail").hidden = true;
+  renderAll();
+  showToast(`امانت ثبت شد: ${copy.code}`);
+};
+window.returnLoan = async (id) => {
+  const loan = db.loans.find(l=>l.id===id);
+  if (!loan || loan.status!=="active") return;
+  if (!confirm("بازگشت ثبت شود؟")) return;
+  loan.status = "returned"; loan.returnedAt = new Date().toISOString();
+  const b = db.books.find(x=>x.id===loan.bookId);
+  if (b) { const c = b.copies.find(c=>c.loanId===loan.id); if(c){ c.status="available"; delete c.loanId; } }
+  try { await saveDB(); } catch(e){ showToast("خطا در ذخیره"); return; }
+  document.getElementById("bookDetail").hidden = true;
+  renderAll();
+  showToast("بازگشت ثبت شد");
+};
+
+/* ============================================================
+   Auth
+   ============================================================ */
+const authModal = document.getElementById("authModal");
+document.getElementById("loginBtn").onclick = () => authModal.hidden = false;
+window.switchTab = (tab) => {
+  const isLogin = tab === "login";
+  document.getElementById("loginForm").style.display = isLogin ? "block" : "none";
+  document.getElementById("registerForm").style.display = isLogin ? "none" : "block";
+  document.getElementById("tabLogin").className = "btn btn-sm " + (isLogin ? "btn-primary" : "btn-ghost");
+  document.getElementById("tabRegister").className = "btn btn-sm " + (!isLogin ? "btn-teal" : "btn-ghost");
+  document.getElementById("authTitle").textContent = isLogin ? "🔑 ورود" : "📝 ثبت‌نام";
+  if (!isLogin) {
+    setTimeout(() => showToast("راهنمای ثبت‌نام را در پایین فرم بخوانید"), 200);
+  }
+};
+document.getElementById("loginForm").onsubmit = async e => {
+  e.preventDefault();
+  const name = document.getElementById("loginName").value.trim();
+  const pw = document.getElementById("loginPass").value;
+  const user = db.users.find(u => u.name === name && u.role === "reader");
+  if (!user) { showToast("کاربر یافت نشد"); return; }
+  const hash = await hashPassword(pw);
+  if (hash !== user.password) { showToast("رمز اشتباه"); return; }
+  currentUser = user;
+  sessionStorage.setItem(SESSION_KEY, JSON.stringify(user));
+  applyUser();
+  authModal.hidden = true;
+  goTo("home");
+  showToast(`خوش آمدید ${user.name}`);
+};
+document.getElementById("registerForm").onsubmit = async e => {
+  e.preventDefault();
+  const name = document.getElementById("regName").value.trim();
+  const pw = document.getElementById("regPass").value;
+  const pw2 = document.getElementById("regPass2").value;
+  if (pw !== pw2) { showToast("رمزها یکسان نیستند"); return; }
+  if (pw.length < 4) { showToast("رمز حداقل ۴"); return; }
+  if (db.users.find(u => u.name === name)) { showToast("این نام تکراری است"); return; }
+  const user = { id: "u"+Date.now(), name, password: await hashPassword(pw), role: "reader" };
+  db.users.push(user);
+  try { await saveDB(); } catch(e){ showToast("خطا در ذخیره"); return; }
+  currentUser = user;
+  sessionStorage.setItem(SESSION_KEY, JSON.stringify(user));
+  applyUser();
+  authModal.hidden = true;
+  goTo("home");
+  showToast("ثبت‌نام انجام شد");
+};
+document.getElementById("logoutBtn").onclick = () => {
+  currentUser = null;
+  sessionStorage.removeItem(SESSION_KEY);
+  applyUser();
+  goTo("home");
+  showToast("خارج شدید");
+};
+function applyUser(){
+  const logged = !!currentUser;
+  document.getElementById("loginBtn").style.display = logged ? "none" : "grid";
+  document.getElementById("logoutBtn").style.display = logged ? "grid" : "none";
+  document.getElementById("userGreeting").textContent = logged ? `${currentUser.name} • خواننده` : "کتابخانه عمومی";
+  if (logged && currentUser.role === "reader") {
+    document.getElementById("readerBanner").style.display = "block";
+    document.getElementById("readerName").textContent = currentUser.name;
+    document.getElementById("qName").value = currentUser.name;
+    document.getElementById("reqName").value = currentUser.name;
+  } else {
+    document.getElementById("readerBanner").style.display = "none";
+  }
+  buildSidebar();
+  buildBottomNav();
+}
+
+/* ============================================================
+   Forms
+   ============================================================ */
+document.getElementById("questionForm").onsubmit = async e => {
+  e.preventDefault();
+  const name = document.getElementById("qName").value.trim();
+  const text = document.getElementById("qText").value.trim();
+  if (!name || !text) return;
+  db.questions.push({ id: makeId(), question: text, asker: name, createdAt: new Date().toISOString(), answer: "", answeredBy: "", answeredAt: "" });
+  try { await saveDB(); } catch(e){ showToast("خطا در ذخیره"); return; }
+  e.target.reset();
+  if (currentUser && currentUser.role === "reader") document.getElementById("qName").value = currentUser.name;
+  renderQA();
+  showToast("سوال ثبت شد");
+};
+document.getElementById("requestForm").onsubmit = async e => {
+  e.preventDefault();
+  const name = document.getElementById("reqName").value.trim();
+  const type = document.getElementById("reqType").value;
+  const msg = document.getElementById("reqMessage").value.trim();
+  if (!name || !msg) return;
+  db.requests.push({ id: makeId(), type, message: msg, user: name, date: new Date().toISOString() });
+  try { await saveDB(); } catch(e){ showToast("خطا در ذخیره"); return; }
+  e.target.reset();
+  if (currentUser && currentUser.role === "reader") document.getElementById("reqName").value = currentUser.name;
+  showToast("ارسال شد");
+};
+
+/* ============================================================
+   Theme
+   ============================================================ */
+const themeBtn = document.getElementById("themeToggle");
+function updateTheme(){ themeBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; }
+themeBtn.onclick = () => {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  updateTheme();
+};
+if (localStorage.getItem("theme")==="dark") document.body.classList.add("dark");
+updateTheme();
+
+/* ============================================================
+   Init
+   ============================================================ */
+(async function init(){
+  await loadDB();
+  const saved = sessionStorage.getItem(SESSION_KEY);
+  if (saved) {
+    try {
+      const u = JSON.parse(saved);
+      const fresh = db.users.find(x => x.id === u.id);
+      if (fresh && fresh.role === "reader") currentUser = fresh;
+    } catch(e){}
+  }
+  applyUser();
+  renderAll();
+  goTo("home");
+})();
+</script>
+</body>
+</html>
